@@ -1,6 +1,6 @@
-// Dependencies
+// Bringing in express package
 const express = require('express');
-
+const path = require('path')
 // app use express
 const app = express();
 
@@ -15,10 +15,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-// routes to route files
-require('./Develop/public/routes/apiRoutes')(app);
-require('./Develop/public/routes/htmlRoutes')(app);
-
+// // routes to route files
+// require('./Develop/public/routes/apiRoutes')(app);
+const htmlRoutes = require('./routes/htmlRoutes');
+app.use(htmlRoutes);
+const apiRoutes = require('./routes/apiRoutes');
+app.use(apiRoutes);
 
 // app listener - starts the server
 app.listen(PORT, () => {
