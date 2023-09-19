@@ -8,9 +8,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 
-// asks express to create a route for every file in the 'public' folder and give it a '/' route
+//creates a route for every file in the public folder 
 app.use(express.static('public'));
-// sets up express app to handel data parser, middle wear created req.body
+//middle wear created req.body, handle data parser
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
